@@ -2,7 +2,7 @@
 
 This repository contains example scenarios for estimating the probability of rolling a 1, 2, 3, 4, 5, or 6 for a biased 6-sided die.
 
-The simulation and observation models are defined in `src/example/__init__.py`.
+The simulation model is defined in [die.py](./die.py) and the observation model is defined in [roll.py](./roll.py).
 
 ## Usage
 

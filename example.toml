@@ -1,5 +1,5 @@
 [components]
-model = "example.Example"
+model = "die.Die"
 time = "pypfilt.Scalar"
 sampler = "pypfilt.sampler.LatinHypercube"
 summary = "pypfilt.summary.HDF5"
@@ -24,7 +24,7 @@ regularisation.bounds.p_5 = { min = 1e-3, max = 1 }
 regularisation.bounds.p_6 = { min = 1e-3, max = 1 }
 
 [observations.roll]
-model = "example.Roll"
+model = "roll.Roll"
 
 [summary.tables]
 model_cints.component = "pypfilt.summary.ModelCIs"

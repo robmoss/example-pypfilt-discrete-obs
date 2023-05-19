@@ -30,6 +30,10 @@ dependencies = [
     "pypfilt == 0.8.0",
 ]
 
+[tool.setuptools]
+# Disable automatic package discovery.
+py-modules = []
+
 [tool.ruff]
 # Enable pyflakes (F), pycodestyle (E, W), and flake8-bugbear (B).
 select = ["F", "E", "W", "B"]
