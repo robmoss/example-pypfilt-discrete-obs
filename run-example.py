@@ -62,6 +62,10 @@ df_fracs = (
     .agg(frac=pl.col('time').count().truediv(pl.lit(df_rolls.height)))
 )
 
+# Define custom breaks and labels for each credible interval.
+breaks = list(df_cints['prob'].unique().sort())[::-1]
+labels = [f'{prob}%' for prob in breaks]
+
 # Plot the credible intervals against the ground truth and observed outcomes.
 plot = (
     pn.ggplot()
@@ -83,14 +87,15 @@ plot = (
     + pn.ylab('Probability')
     + pn.scale_fill_continuous(
         name='CrI',
-        breaks=[0, 50, 95],
-        labels=['0%', '50%', '95%'],
+        breaks=breaks,
+        labels=labels,
     )
     + pn.scale_colour_continuous(
         name='CrI',
-        breaks=[0, 50, 95],
-        labels=['0%', '50%', '95%'],
+        breaks=breaks,
+        labels=labels,
     )
+    + pn.guides(color=pn.guide_legend(), fill=pn.guide_legend())
 )
 
 plot_file = 'example.png'
