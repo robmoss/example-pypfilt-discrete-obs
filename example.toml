@@ -1,0 +1,49 @@
+[components]
+model = "example.Example"
+time = "pypfilt.Scalar"
+sampler = "pypfilt.sampler.LatinHypercube"
+summary = "pypfilt.summary.HDF5"
+
+[time]
+start = 0
+until = 100
+steps_per_unit = 1
+
+[filter]
+particles = 100
+prng_seed = 2001
+history_window = -1
+resample.threshold = 0.25
+regularisation.enabled = true
+# NOTE: ensure probabilities are never zero.
+regularisation.bounds.p_1 = { min = 1e-3, max = 1 }
+regularisation.bounds.p_2 = { min = 1e-3, max = 1 }
+regularisation.bounds.p_3 = { min = 1e-3, max = 1 }
+regularisation.bounds.p_4 = { min = 1e-3, max = 1 }
+regularisation.bounds.p_5 = { min = 1e-3, max = 1 }
+regularisation.bounds.p_6 = { min = 1e-3, max = 1 }
+
+[observations.roll]
+model = "example.Roll"
+
+[summary.tables]
+model_cints.component = "pypfilt.summary.ModelCIs"
+model_cints.credible_intervals = [ 0, 50, 60, 70, 80, 90, 95 ]
+
+[scenario.example]
+prior.p_1 = { external = true, table = "prior.ssv", column = "p_1" }
+prior.p_2 = { external = true, table = "prior.ssv", column = "p_2" }
+prior.p_3 = { external = true, table = "prior.ssv", column = "p_3" }
+prior.p_4 = { external = true, table = "prior.ssv", column = "p_4" }
+prior.p_5 = { external = true, table = "prior.ssv", column = "p_5" }
+prior.p_6 = { external = true, table = "prior.ssv", column = "p_6" }
+observations.roll.file = "simulated-rolls.ssv"
+
+[scenario.simulate]
+filter.particles = 1
+prior.p_1 = { name = "constant", args.value = 0.1 }
+prior.p_2 = { name = "constant", args.value = 0.1 }
+prior.p_3 = { name = "constant", args.value = 0.1 }
+prior.p_4 = { name = "constant", args.value = 0.1 }
+prior.p_5 = { name = "constant", args.value = 0.1 }
+prior.p_6 = { name = "constant", args.value = 0.5 }
