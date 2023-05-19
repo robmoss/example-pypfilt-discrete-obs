@@ -6,13 +6,15 @@ The simulation and observation models are defined in `src/example/__init__.py`.
 
 ## Usage
 
-Please ensure that [nox](https://nox.thea.codes/en/stable/) is installed, and use it (a) simulate die rolls; (b) construct prior samples; (c) fit the model to the simulated die rolls; and (d) plot the results:
+Please ensure that [nox](https://nox.thea.codes/en/stable/) is installed, and use it (a) simulate die rolls; (b) construct prior samples; (c) fit the model to the simulated die rolls; and (d) plot the results to `example.png`:
 
 ```sh
 nox
 ```
 
 ![The example results.](./example.png)
+
+The solid horizontal lines show the ground truth probability for each outcome, and the dashed horizontal lines show the proportion of simulated die rolls for each outcome.
 
 ## License
 
